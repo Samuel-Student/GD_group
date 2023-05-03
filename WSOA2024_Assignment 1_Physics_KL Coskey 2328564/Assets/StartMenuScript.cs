@@ -29,7 +29,7 @@ public class StartMenuScript : MonoBehaviour
         if (i == nextPage.Length)
         {
             Destroy(GameObject.Find("Next"));
-            GameObject.Find("Play Button").transform.localPosition= new Vector3(0, -90, 0);
+            GameObject.Find("Play Button").transform.localPosition= new Vector3(0, -190, 0);
         }
 
     }
