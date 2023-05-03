@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FlashObjColor : MonoBehaviour
+{
+    private float flashTime= 0.2f;
+    private Coroutine flashing;
+    private Color flashC;
+
+    public void objFlash(Color _color)
+    {
+        flashC = _color;
+        if (flashing != null )
+        {
+            StopCoroutine(flashing);
+        }
+        flashing= StartCoroutine(colorFlash());
+
+    }
+
+    private IEnumerator colorFlash()
+    {
+        Color temp = transform.GetComponent<SpriteRenderer>().color;
+        transform.GetComponent<SpriteRenderer>().color = flashC;
+        yield return new WaitForSeconds(flashTime);
+        transform.GetComponent<SpriteRenderer>().color = temp;
+        //Debug.Log("Changed color");
+        flashing = null;
+
+        
+    }
+}
