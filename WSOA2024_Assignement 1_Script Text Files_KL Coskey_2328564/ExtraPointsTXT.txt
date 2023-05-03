@@ -30,14 +30,14 @@ public class ExtraPoints : MonoBehaviour
             if (GameManager.instance.t_state== GameManager.Turns.t_Player)
             {
                 ///the computer touched it last making it turn to player
-                Keeper.p_computerScored(2);
+                Keeper.p_computerScored(1);
                 _flash.objFlash(Color.yellow);
                 
             }
             else if (GameManager.instance.t_state == GameManager.Turns.t_Computer)
             {
                 ///the player touched it last making it turn to computer
-                Keeper.p_playerScored(2);
+                Keeper.p_playerScored(1);
                 _flash.objFlash(Color.green);
                 
             }
