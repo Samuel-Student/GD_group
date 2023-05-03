@@ -1,11 +1,13 @@
 using Scoring;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public LoadAssetPaths assetPaths;
     public ScoreKeeper Keeper;
+    //public Goal goal;
 
     public static GameManager instance;
 
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         assetPaths = new LoadAssetPaths();
         assetPaths.Start();
         Keeper = new ScoreKeeper();
+        //goal = new Goal();
 
         puck = assetPaths.puck;
         scoreBoard = assetPaths.scoreBoard;
@@ -89,10 +92,34 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Play")
+        {
+            checkCurrentScore();
+        }
+        
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
     }
 
+    public void checkCurrentScore()
+    {
+        if (PlayerScore == 5 || ComputerScore == 5)
+        {
+            Debug.Log("Max points reached");
+            SceneManager.LoadScene("EndGame");
+            //StartCoroutine(MaxPointsReached());
+        }
+
+    }
+    /*
+    public void MaxPointsReached()
+    {
+
+        //_scoreBoard.GetComponent<CanvasScaler>().scaleFactor = 1;
+        //yield return new WaitForSeconds(1);
+        //DontDestroyOnLoad(_scoreBoard);
+        SceneManager.LoadScene("EndGame");
+    }*/
 }

@@ -54,13 +54,13 @@ namespace Scoring
                     Keeper.p_playerScored(1);
                 }
                 
-                checkCurrentScore();
+                //checkCurrentScore();
             }
         }
-
+        /*
         public void checkCurrentScore()
         {
-            if (GameManager.PlayerScore >= 15 || GameManager.ComputerScore >= 15)
+            if (GameManager.PlayerScore == 5 || GameManager.ComputerScore == 5)
             {
                 StartCoroutine(MaxPointsReached());
             }
@@ -73,7 +73,7 @@ namespace Scoring
             yield return new WaitForSeconds(1);
             //DontDestroyOnLoad(_scoreBoard);
             SceneManager.LoadScene("EndGame");
-        }
+        }*/
 
         IEnumerator goalScored()
         {
